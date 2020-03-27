@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #when creating a new django app, remember to add the app here
+    'adoptions'
 ]
 
 MIDDLEWARE = [
