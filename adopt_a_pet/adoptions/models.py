@@ -18,4 +18,6 @@ class Pet(models.Model):
 class Vaccine(models.Model):
     name = models.CharField(max_length=50)
 
-    
+#overwrites django's default method __str__ for string representation
+def __str__(self):
+    return self.name
