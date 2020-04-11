@@ -1,21 +1,13 @@
-"""adopt_a_pet URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.11/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
-"""
 from django.conf.urls import url
 from django.contrib import admin
 
+from adoptions import views
+
+#use raw string so that \ won't be use for escaping strings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', views.home, name='home'),
+    #Use (\d+) as regex to find ids as numbers, parantheses to include the \d+ as a group\
+    #allows django to pass (\d+) as a parameter for views.py
+    url(r'^adoptions/(\d+)/', views.pet_detail, name='pet_detail')
 ]
