@@ -1,1 +1,25 @@
-PET DETAIL
+<div>
+    <h3>{{pet.name|capfirst}}</h3>
+    <p>{{pet.species}}</p>
+    {%if pet.breed%}
+        <p>Breed: {{pet.breed}}</p>
+    {%endif%}
+    {%if pet.age%}
+        <p>Age: {{pet.age}}</p>
+    {%endif%}
+    {%if pet.sex%}
+        <p>Sex: {{pet.sex}}</p>
+    {%endif%}
+    {%if pet.vaccinations.all%}
+        <p> Vaccinations for: </p>
+        <ul>
+            {%for vac in pet.vaccinations.all%}
+            <li>{{vac.name}}</li>
+            {%endfor%}
+        </ul>
+    {%endif%}
+    <p>Submitted by: {{pet.submitter}}</p>
+    {% comment %} use template filter to format the date nicely {% endcomment %}
+    <p>Submitted on: {{pet.submission_date|date:"M d Y"}}</p>
+    <p>{{pet.description}}</p>
+</div>
